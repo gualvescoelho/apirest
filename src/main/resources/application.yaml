@@ -1,0 +1,26 @@
+server:
+  port: 8009
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/loja
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# Configuração do Flyway para migração de banco de dados
+flyway:
+  url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/
+  schemas: cambio_service
+  user: root
+  password: 123456
+  locations: classpath:db/migration
+  baselineOnMigrate: true
+
+cambio-service:
+  url: http://localhost:8009/cambio-service/
